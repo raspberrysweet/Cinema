@@ -1,3 +1,4 @@
+// ovo sam videla na kursu,  u jednoj lekciji su koristili ove klase kao tipove, pa kasnije nisu
 export class Movie implements MovieInterface {
     id: number;
     name: string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Movie } from '../model';
+// import { Observable } from 'rxjs';
+// import { Movie } from '../model';
 
 
 @Component({
@@ -23,9 +23,10 @@ export class MainComponent implements OnInit {
    }
 
    private loadData() {
+     // ovo je prekopiran kod sa kursa koji javlja gresku
    // this.http.get('/api/movies').subscribe((res: Response) => {this.movies = res.json(); });
    const o: any = this.http.get('api/movies');
-   o.subscribe( data => {
+   o.subscribe( data => {  // morala sam movies: any[] jer javlja gresku
     this.movies = data as any[]; });
    }
 }
