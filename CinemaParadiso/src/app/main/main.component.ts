@@ -12,21 +12,21 @@ import { HttpClient } from '@angular/common/http';
 export class MainComponent implements OnInit {
 
 
-  private movies: any[];
+  public movies: any[];
 
   constructor(private http: HttpClient) {
     this.movies = [];
-    this.loadData();
    }
 
    ngOnInit() {
+    this.loadData();
    }
 
    private loadData() {
      // ovo je prekopiran kod sa kursa koji javlja gresku
    // this.http.get('/api/movies').subscribe((res: Response) => {this.movies = res.json(); });
    const o: any = this.http.get('api/movies');
-   o.subscribe( data => {  // morala sam movies: any[] jer javlja gresku
+   o.subscribe( (data: any[]) => {  // morala sam movies: any[] jer javlja gresku
     this.movies = data as any[]; });
    }
 }

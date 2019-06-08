@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Fixed navbar -->\n<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\">Home</a>\n    </div>\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li *ngIf=\"isLoggedIn()\"><a href=\"\" (click)=\"logOut()\">logout</a></li>\n      </ul>\n    </div><!--/.nav-collapse -->\n  </div>\n</nav>\n<br>\n<br>\n<br>\n<div class=\"container theme-showcase\" role=\"main\">    \n  <!-- Main jumbotron for a primary marketing message or call to action -->\n  <div class=\"jumbotron\">\n    <h1>Cinama Paradiso</h1>\n    <p>Best cinema ever!</p>\n  </div>\n \n\n  <router-outlet></router-outlet>\n</div>"
+module.exports = "<!-- Bootstrap -->\n<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\">Home</a>\n    </div>\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li *ngIf=\"isLoggedIn()\"><a href=\"\" (click)=\"logOut()\">logout</a></li>\n      </ul>\n    </div><!--/.nav-collapse -->\n  </div>\n</nav>\n<br>\n<br>\n<br>\n<div class=\"container theme-showcase\" role=\"main\">    \n  <!-- Main jumbotron for a primary marketing message or call to action -->\n  <div class=\"jumbotron\">\n    <h1>Cinama Paradiso</h1>\n    <p>Best cinema ever!</p>\n  </div>\n \n\n  <router-outlet></router-outlet>\n</div>"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<!-- Fixed navbar -->\n<nav class=\"navbar navbar-inverse navb
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-8\">\n      <table class=\"table\">\n          <tr>\n              <th>Title</th>\n              <th>Synopsis</th>\n              <th>Genre</th>\n          </tr>\n          <tr *ngFor=\"let m of movies\">\n              <td>{{m.name}}</td>\n              <td>{{m.synopsis}}</td>\n              <td>{{m.genre.name}}</td>\n         </tr>\n      </table>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-md-8\">\n      <table class=\"table\">\n          <tr>\n              <th>Title</th>\n              <th>Synopsis</th>\n              <th>Genre</th>\n          </tr>\n          <tr *ngFor=\"let m of movies\">\n              <td>name</td>\n              <td>synopsis</td>\n              <td>genre</td>\n         </tr>\n      </table>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -52,7 +52,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-md-8\">\n      <table 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-8\">\n      <table class=\"table\">\n          <tr>\n              <th>Title</th>\n              <th>Synopsis</th>\n              <th>Genre</th>\n              <th>Showtime</th>\n              <th>Action</th>\n          </tr>\n          <tr *ngFor=\"let m of movies\">\n              <td>{{m.name}}</td>\n              <td>{{m.synopsis}}</td>\n              <td>{{m.genre}}</td>\n              <td>{{m.showtime}}</td>\n              <td><button class=\"btn btn-primary\" (click)=\"edit(c)\">edit</button></td>\n          </tr>\n      </table>\n "
+module.exports = ""
 
 /***/ }),
 
@@ -188,8 +188,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(appRoutes, { enableTracing: true } // <-- debugging purposes only
-            )
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"].forRoot(appRoutes, { enableTracing: true })
         ],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -227,15 +226,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { Observable } from 'rxjs';
+// import { Movie } from '../model';
 let MainComponent = class MainComponent {
     constructor(http) {
         this.http = http;
         this.movies = [];
-        this.loadData();
     }
     ngOnInit() {
+        this.loadData();
     }
     loadData() {
+        // ovo je prekopiran kod sa kursa koji javlja gresku
         // this.http.get('/api/movies').subscribe((res: Response) => {this.movies = res.json(); });
         const o = this.http.get('api/movies');
         o.subscribe(data => {
