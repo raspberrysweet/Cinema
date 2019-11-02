@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Bootstrap -->\n<nav class=\"navbar navbar-inverse navbar-fixed-top\">\n  <div class=\"container\">\n    <div class=\"navbar-header\">\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n      </button>\n      <a class=\"navbar-brand\">Home</a>\n    </div>\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\n      <ul class=\"nav navbar-nav\">\n        <li *ngIf=\"isLoggedIn()\"><a href=\"\" (click)=\"logOut()\">logout</a></li>\n      </ul>\n    </div><!--/.nav-collapse -->\n  </div>\n</nav>\n<br>\n<br>\n<br>\n<div class=\"container theme-showcase\" role=\"main\">    \n  <!-- Main jumbotron for a primary marketing message or call to action -->\n  <div class=\"jumbotron\">\n    <h1>Cinama Paradiso</h1>\n    <p>Best cinema ever!</p>\n  </div>\n \n\n  <router-outlet></router-outlet>\n</div>"
+module.exports = "<!-- Bootstrap -->\r\n<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n        <span class=\"sr-only\">Toggle navigation</span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n        <span class=\"icon-bar\"></span>\r\n      </button>\r\n      <a class=\"navbar-brand\">Home</a>\r\n    </div>\r\n    <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li *ngIf=\"isLoggedIn()\"><a href=\"\" (click)=\"logOut()\">logout</a></li>\r\n      </ul>\r\n    </div><!--/.nav-collapse -->\r\n  </div>\r\n</nav>\r\n<br>\r\n<br>\r\n<br>\r\n<div class=\"container theme-showcase\" role=\"main\">    \r\n  <!-- Main jumbotron for a primary marketing message or call to action -->\r\n  <div class=\"jumbotron\">\r\n    <h1>Cinama Paradiso</h1>\r\n    <p>Best cinema ever!</p>\r\n  </div>\r\n \r\n\r\n  <router-outlet></router-outlet>\r\n</div>"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "<!-- Bootstrap -->\n<nav class=\"navbar navbar-inverse navbar-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-md-8\">\n      <table class=\"table\">\n          <tr>\n              <th>Title</th>\n              <th>Synopsis</th>\n              <th>Genre</th>\n          </tr>\n          <tr *ngFor=\"let m of movies\">\n              <td>name</td>\n              <td>synopsis</td>\n              <td>genre</td>\n         </tr>\n      </table>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-8\">\r\n      <table class=\"table\">\r\n          <tr>\r\n              <th>Title</th>\r\n              <th>Synopsis</th>\r\n              <th>Genre</th>\r\n          </tr>\r\n          <tr *ngFor=\"let m of movies\">\r\n              <td>{{m.name}}</td>\r\n              <td>{{m.synopsis}}</td>\r\n              <td>{{m.genre.name}}</td>\r\n         </tr>\r\n      </table>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -63,7 +63,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  page-not-found works!\n</p>\n"
+module.exports = "<p>\r\n  page-not-found works!\r\n</p>\r\n"
 
 /***/ }),
 
@@ -226,23 +226,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { Observable } from 'rxjs';
 // import { Movie } from '../model';
 let MainComponent = class MainComponent {
     constructor(http) {
         this.http = http;
         this.movies = [];
-    }
-    ngOnInit() {
         this.loadData();
     }
+    ngOnInit() {
+    }
     loadData() {
-        // ovo je prekopiran kod sa kursa koji javlja gresku
-        // this.http.get('/api/movies').subscribe((res: Response) => {this.movies = res.json(); });
-        const o = this.http.get('api/movies');
-        o.subscribe(data => {
-            this.movies = data;
-        });
+        return this.http.get('/api/movies');
     }
 };
 MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -403,7 +397,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Angular\Cinema\client\CinemaParadiso\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\Angular\newCinema\Cinema\CinemaParadiso\src\main.ts */"./src/main.ts");
 
 
 /***/ })

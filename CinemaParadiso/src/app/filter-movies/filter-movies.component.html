@@ -1,0 +1,21 @@
+<div class="filter-container">
+  <form name="filterTest" (ngSubmit)="filterMovies()">
+      
+    <label for="input-title">title: </label>
+      <input name="testInput" for="movie-title" id="movie-title" [(ngModel)]="filterParams.param1"/>
+
+    <!-- <label for="input-author">genre: </label>
+        <select name="input-genre" id="input-genre"  [(ngModel)]="filterParams.param1">
+               <option *ngFor="let genre of genres" [ngValue]="genre.name">{{genre.name}}</option>
+        </select><br/>*/
+    -->
+
+  <label for="input-author">genre: </label>
+        <select name="input-genre" id="input-genre"  [(ngModel)]="filterParams.param2">
+               <option *ngFor="let genreName of genreNames()" [ngValue]="genreName">{{genreName}}</option>
+        </select>
+
+   <input type="submit" value="filter"/>
+
+  </form>
+</div>

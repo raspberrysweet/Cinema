@@ -1,22 +1,13 @@
 <!-- Bootstrap -->
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand">Home</a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
+<div class="conttainer">
+  <button class="btn btn-link" (click)="showHome()">Home</button>
+  <button class="btn btn-link" (click)="addMoviePage()">Add</button>
+</div>
+    <!--<div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li *ngIf="isLoggedIn()"><a href="" (click)="logOut()">logout</a></li>
       </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
+    </div>-->
 <br>
 <br>
 <br>
@@ -26,7 +17,7 @@
     <h1>Cinama Paradiso</h1>
     <p>Best cinema ever!</p>
   </div>
- 
-
+</div>
+<div>
   <router-outlet></router-outlet>
 </div>

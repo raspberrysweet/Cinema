@@ -1,0 +1,12 @@
+<div *ngIf="isDataAvailable">
+    <h1>{{movie.name}}</h1>
+    <div *ngIf="movie.showtimes.length!=0">
+    Showtimes:
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let showtime of movie.showtimes">
+        {{showtime.timeAndDate}}
+      </li>
+    </ul>
+    </div>
+</div>
+  

@@ -1,10 +1,9 @@
-// ovo sam videla na kursu,  u jednoj lekciji su koristili ove klase kao tipove, pa kasnije nisu
 export class Movie implements MovieInterface {
-    id: number;
+    id?: number;
     name: string;
-    genre: GenreInterface;
+    genre: Genre;
     synposis: string;
-    showtimes: ShowtimeInterface;
+    showtimes: Showtime[];
 
     constructor(movieCfg: MovieInterface) {
         this.id = movieCfg.id;
@@ -14,21 +13,52 @@ export class Movie implements MovieInterface {
         this.showtimes = movieCfg.showtimes;
     }
 }
+export class Genre implements GenreInterface {
+    id?: number;
+    name: string;
+
+    constructor(genreCfg: GenreInterface) {
+        this.id = genreCfg.id;
+        this.name = genreCfg.name;
+    }
+}
 
 interface MovieInterface {
     id?: number;
     name: string;
-    genre: GenreInterface;
+    genre: Genre;
     synposis: string;
-    showtimes: ShowtimeInterface;
+    showtimes: Showtime[];
 }
 
-interface GenreInterface {
+export interface GenreInterface {
     id?: number;
     name: string;
 }
 
-interface ShowtimeInterface {
+export interface FilterParamsInterface {
+    param1: string;
+    param2: string;
+  }
+
+export class FilterParams implements FilterParamsInterface {
+    param1: string;
+    param2: string;
+    constructor(fileteParams: FilterParamsInterface) {
+        this.param1 = fileteParams.param1;
+        this.param2 = fileteParams.param2;
+    }
+
+}
+export interface ShowtimeInterface {
     id?: number;
     timeAndDate: string;
-  }
+
+}
+export class Showtime implements ShowtimeInterface {
+    id?: number;
+    timeAndDate: string;
+    constructor(timeAndDate: string) {
+        this.timeAndDate = timeAndDate;
+    }
+}

@@ -1,0 +1,24 @@
+<div>First add shows:
+  <input name="input-show" id="input-show" [(ngModel)]="show"/>
+  <button (click)="addShowtime()">add showtime </button>
+</div>
+
+<form (ngSubmit)="addMovie()">
+	
+    <label for="input-title">name: </label>
+      <input name="input-title" id="input-title" [(ngModel)]="newMovie.name"/><br/>
+
+    <label for="input-synopsis">synopsis: </label>
+      <input name="input-synopsis" id="input-synopsis" [(ngModel)]="newMovie.synopsis"/><br/>    
+    
+    <label for="input-author">genre: </label>
+      <select name="input-genre" id="input-genre"  [(ngModel)]="newMovie.genre">
+        <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
+      </select><br/>
+    
+    <label *ngIf="notHidden" for="input-price">showtime: </label>
+     <input *ngIf="notHidden" name="input-timeAndDate" id="input-timeAndDate" [(ngModel)]="timeAndDate"/> 
+    
+    <input type="submit" value="save"/>
+  
+</form>

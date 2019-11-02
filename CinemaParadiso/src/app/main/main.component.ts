@@ -1,32 +1,49 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
+import { HttpClientService } from '../service/http-client.service';
 // import { Observable } from 'rxjs';
-// import { Movie } from '../model';
+import { Movie, Genre, FilterParams } from '../model';
+import { Router } from '@angular/router';
+
 
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main.component.html',
+ templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
 
 
-  public movies: any[];
+  public movies: Movie[];
+  public genres: Genre[];
+  public filterCriteria: FilterParams;
 
-  constructor(private http: HttpClient) {
+  constructor(private httpClientService: HttpClientService, private router: Router) {
     this.movies = [];
-   }
-
-   ngOnInit() {
+    this.genres = [];
+    this.filterCriteria = {
+      param1: '',
+      param2: ''
+    };
     this.loadData();
    }
 
-   private loadData() {
-     // ovo je prekopiran kod sa kursa koji javlja gresku
-   // this.http.get('/api/movies').subscribe((res: Response) => {this.movies = res.json(); });
-   const o: any = this.http.get('api/movies');
-   o.subscribe( (data: any[]) => {  // morala sam movies: any[] jer javlja gresku
-    this.movies = data as any[]; });
+   ngOnInit() {console.log('blablabla'); }
+
+  private loadData() {
+    this.httpClientService.getMovies(this.filterCriteria.param1, this.filterCriteria.param2).subscribe(res => {this.movies = res; });
+    this.httpClientService.getGenres().subscribe(data => { this.genres = data; });
+  }
+
+movieShowtimes(index: number) {
+    this.router.navigate(['/movie-showtime', index]);
    }
+
+ngFilterMovies(filterParams: FilterParams) {
+      this.filterCriteria = filterParams;
+      this.loadData();
+      console.log('nesto u main-u pozvan');
+    }
 }
+
