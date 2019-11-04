@@ -13,6 +13,10 @@ import { MovieShwotimeComponent } from './movie-shwotime/movie-shwotime.componen
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { FilterMoviesComponent } from './filter-movies/filter-movies.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './security/authentication.service';
+import {CanActivateAdminService } from './security/can-activate-admin.service';
+
 
 
 
@@ -34,6 +38,8 @@ const appRoutes: Routes = [
     AddMovieComponent,
     MovieListComponent,
     FilterMoviesComponent,
+    LoginComponent,
+    AuthenticationService,
    ],
   imports: [
     BrowserModule,
@@ -45,7 +51,10 @@ const appRoutes: Routes = [
       { enableTracing: true }
     )
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    CanActivateAdminService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,7 @@
 <div class="container">
-<app-filter-movies [genres]="genres" (filterCriteria)="ngFilterMovies($event)"></app-filter-movies>
-<app-movie-list [movies]="movies" (movieShowtimes)="movieShowtimes($event)"></app-movie-list>
+    
+        <app-filter-movies [genres]="genres" (filterCriteria)="ngFilterMovies($event)"></app-filter-movies>
+        <app-movie-list [movies]="movies" (movieShowtimes)="movieShowtimes($event)"></app-movie-list>
+
+
 </div>

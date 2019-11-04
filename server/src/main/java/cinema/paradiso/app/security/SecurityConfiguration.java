@@ -61,14 +61,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 			.authorizeRequests() // bez logovanja dostupni samo servisi login
-				.antMatchers("/api/login").permitAll()
-//				.antMatchers(HttpMethod.GET, "/api/**").hasAuthority("ROLE_USER")
-//				.antMatchers(HttpMethod.POST, "/api/**").hasAuthority("ROLE_ADMIN")
-//				.antMatchers(HttpMethod.DELETE, "/api/**").hasAuthority("ROLE_ADMIN")
-//				.antMatchers(HttpMethod.PUT, "/api/**").hasAuthority("ROLE_ADMIN")
+				.antMatchers("/api/main").permitAll()
 				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated(); // za ostale akcije se mora biti ulogovan
-				
+				// "/api/login",
 		// pre standardnog Spring filtera, postavlja se nas filter za postavljanje korisnika na osnovu 
 		// JWT tokena u zahtevu
 		httpSecurity.addFilterBefore(authenticationTokenFilterBean(),

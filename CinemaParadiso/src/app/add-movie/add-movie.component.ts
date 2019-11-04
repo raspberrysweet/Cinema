@@ -30,7 +30,7 @@ export class AddMovieComponent implements OnInit {
     this.timeAndDate = '';
     this.showtimeList = [];
     this.show = '';
-    this.notHidden = true;
+    this.notHidden = false;
    }
 
   ngOnInit() {
@@ -39,13 +39,16 @@ export class AddMovieComponent implements OnInit {
   addMovie() {
     this.newMovie.showtimes = [...this.showtimeList];
     this.htttpService.saveMovie(this.newMovie).subscribe((data: Response) => {console.log(data); } );
-    this.route.navigate(['/main']);
 
   }
   addShowtime() {
     this.showtimeList.push(new Showtime (this.show));
     this.show = '';
     this.notHidden = false;
+  }
+
+  redirect() {
+    this.route.navigate(['/main']);
   }
 }
 

@@ -1,24 +1,55 @@
-<div>First add shows:
-  <input name="input-show" id="input-show" [(ngModel)]="show"/>
-  <button (click)="addShowtime()">add showtime </button>
-</div>
+<h3>Movie details</h3>   
 
 <form (ngSubmit)="addMovie()">
-	
-    <label for="input-title">name: </label>
-      <input name="input-title" id="input-title" [(ngModel)]="newMovie.name"/><br/>
-
-    <label for="input-synopsis">synopsis: </label>
-      <input name="input-synopsis" id="input-synopsis" [(ngModel)]="newMovie.synopsis"/><br/>    
+  <table>
+    <tr>  
+      <td>
+        <label for="input-author">genre: </label>
+      </td>          
+      <td>
+        <select name="input-genre" id="input-genre"  [(ngModel)]="newMovie.genre">
+          <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
+        </select><br/>
+      </td>    
+    </tr>  
+    <tr>
+      <td><label for="input-title">name: </label></td>
+      
+      <td><input name="input-title" id="input-title" [(ngModel)]="newMovie.name"/><br/></td>
+    </tr>
+    <tr>  
+      <td><label for="input-synopsis">synopsis: </label></td>
     
-    <label for="input-author">genre: </label>
-      <select name="input-genre" id="input-genre"  [(ngModel)]="newMovie.genre">
-        <option *ngFor="let genre of genres" [ngValue]="genre">{{genre.name}}</option>
-      </select><br/>
+      <td><input name="input-synopsis" id="input-synopsis" [(ngModel)]="newMovie.synopsis"/><br/></td>
+    </tr>
     
-    <label *ngIf="notHidden" for="input-price">showtime: </label>
-     <input *ngIf="notHidden" name="input-timeAndDate" id="input-timeAndDate" [(ngModel)]="timeAndDate"/> 
-    
-    <input type="submit" value="save"/>
-  
+    <tr *ngIf="notHidden">
+      <td>  
+        <label for="input-showtime">showtime: </label>
+      </td>
+      <td> 
+        <input name="input-timeAndDate" id="input-timeAndDate" [(ngModel)]="timeAndDate"/>
+      </td> 
+    </tr>
+    <tr> 
+      <td colspan="3" align="center">  
+        <input type="submit" value="save"/>
+      </td>
+    </tr>
+  </table>
 </form>
+<br>
+<h3>Add showtimes</h3>
+<table>
+  <tr>
+    <td>Time and date</td>
+    <td><input name="input-show" id="input-show" [(ngModel)]="show"/></td>
+    <td><button (click)="addShowtime()">add showtime </button></td>
+  </tr>         
+</table>
+<br>
+
+<div>
+  <br>
+  <button (click)="redirect()">go to main page</button>
+</div>

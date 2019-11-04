@@ -57,7 +57,10 @@ public class TestData {
 	yesterday.getShowtimes().add(show3);
 	movieService.save(yesterday);
 	
+	Movie terminator = new Movie ("Terminator: Dark Fate", "Sarah Connor and a hybrid cyborg human must protect a young girl from a newly modified liquid Terminator from the future. ",action);
+	movieService.save(terminator);
 
+	terminator.getShowtimes().add(show1);
 	
 	
 	
